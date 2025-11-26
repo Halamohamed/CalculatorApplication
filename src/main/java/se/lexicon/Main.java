@@ -1,17 +1,78 @@
 package se.lexicon;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.Scanner;
+
+
 public class Main {
     static void main() {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        IO.println(String.format("Hello and welcome!"));
+        Scanner scanner = new Scanner(System.in);
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            IO.println("i = " + i);
+        IO.println(String.format("Hello and welcome!"));
+        Calculator calculator = new Calculator();
+
+
+        // Stores two numbers
+        double num1, num2;
+
+        boolean running = true;
+
+        while (running) {
+            // Take input from the user
+            System.out.println("Enter the first number:");
+
+            // Take the inputs
+            num1 = scanner.nextDouble();
+            System.out.println("Enter the second number:");
+            num2 = scanner.nextDouble();
+
+            // Take operator from the user
+            System.out.println("Enter the operator (+,-,*,/):");
+
+            char option = scanner.next().charAt(0);
+            double result = 0;
+
+            switch (option) {
+                // case to add two numbers
+                case '+':
+                    result = num1 + num2;
+                    break;
+
+                // case to subtract two numbers
+                case '-':
+                    result = num1 - num2;
+                    break;
+
+                // case to multiply two numbers
+                case '*':
+                    result = num1 * num2;
+                    break;
+
+                // case to divide two numbers
+                case '/':
+                    result = num1 / num2;
+                    break;
+
+                default:
+                    System.out.println("You enter wrong input");
+            }
+
+            System.out.println("The final result:");
+            System.out.println();
+
+            // print the final result
+            System.out.println(num1 + " " + option + " " + num2
+                    + " = " + result);
+            IO.println("would you want to calculate more ! (yes/no)");
+            String choice = scanner.next();
+
+            if (choice.equalsIgnoreCase("no")){
+                running = false;
+                break;
+            }
+
         }
     }
-}
+
+
+    }
+
