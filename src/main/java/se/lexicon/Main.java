@@ -12,60 +12,52 @@ public class Main {
 
 
         // Stores two numbers
-        double num1, num2;
+        double num1 = 0, num2 = 0;
 
         boolean running = true;
 
         while (running) {
-            // Take input from the user
-            System.out.println("Enter the first number:");
+            int number = 0;
+            int op = calculator.menu(number);
+            if (op == 5) {
+                running = false;
+                break;
+            }
 
-            // Take the inputs
-            num1 = scanner.nextDouble();
-            System.out.println("Enter the second number:");
-            num2 = scanner.nextDouble();
-
-            // Take operator from the user
-            System.out.println("Enter the operator (+,-,*,/):");
-
-            char option = scanner.next().charAt(0);
+            int option = op;     //scanner.next().charAt(0);
             double result = 0;
 
             switch (option) {
                 // case to add two numbers
-                case '+':
-                    result = num1 + num2;
+                case 1:
+                    result = calculator.addition(num1, num2);
                     break;
 
                 // case to subtract two numbers
-                case '-':
-                    result = num1 - num2;
+                case 2:
+                    result = calculator.substraction(num1, num2);
                     break;
 
                 // case to multiply two numbers
-                case '*':
-                    result = num1 * num2;
+                case 3:
+                    result = calculator.multiplication(num1, num2);
                     break;
 
                 // case to divide two numbers
-                case '/':
-                    result = num1 / num2;
+                case 4:
+                    result = calculator.division(num1, num2);
                     break;
 
                 default:
                     System.out.println("You enter wrong input");
             }
 
-            System.out.println("The final result:");
-            System.out.println();
 
-            // print the final result
-            System.out.println(num1 + " " + option + " " + num2
-                    + " = " + result);
+            calculator.printResult(op, result);
             IO.println("would you want to calculate more ! (yes/no)");
             String choice = scanner.next();
 
-            if (choice.equalsIgnoreCase("no")){
+            if (choice.equalsIgnoreCase("no")) {
                 running = false;
                 break;
             }
@@ -74,5 +66,5 @@ public class Main {
     }
 
 
-    }
+}
 
