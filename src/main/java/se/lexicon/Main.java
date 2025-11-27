@@ -7,6 +7,10 @@ public class Main {
     static void main() {
         Scanner scanner = new Scanner(System.in);
 
+        // GUI Calculator
+        MyFrame myFrame = new MyFrame();
+
+
         IO.println(String.format("Hello and welcome!"));
         Calculator calculator = new Calculator();
 
